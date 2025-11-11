@@ -1,6 +1,6 @@
 import { State } from "./state.js";
 
-export function startREPL(state: State): void {
+export async function startREPL(state: State): Promise<void> {
   state.readline.prompt();
 
   state.readline.on("line", async (input) => {
@@ -22,9 +22,9 @@ export function startREPL(state: State): void {
     }
 
     try {
-      command.callback(state);
+      await command.callback(state);
     } catch (e) {
-      console.log(e);
+      console.log((e as Error).message);
     }
 
     state.readline.prompt();
