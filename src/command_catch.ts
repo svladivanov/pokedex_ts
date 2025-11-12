@@ -2,8 +2,7 @@ import { State } from "./state.js";
 
 export async function commandCatch(state: State, ...args: string[]) {
   if (args.length !== 1) {
-    console.log("Usage: catch <pokemon>");
-    return;
+    throw new Error("Usage: catch <pokemon_name>");
   }
 
   const pokemonName = args[0];

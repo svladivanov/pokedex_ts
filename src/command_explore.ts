@@ -5,8 +5,7 @@ export async function commandExplore(
   ...args: string[]
 ): Promise<void> {
   if (args.length !== 1) {
-    console.log("Usage: explore <location>");
-    return;
+    throw new Error("Usage: explore <location_name>");
   }
 
   const locationName = args[0];
